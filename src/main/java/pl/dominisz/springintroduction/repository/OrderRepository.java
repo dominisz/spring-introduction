@@ -1,12 +1,11 @@
 package pl.dominisz.springintroduction.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import pl.dominisz.springintroduction.model.Order;
 
 import java.util.List;
 
-public interface OrderRepository {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
-  Order save(Order order);
-
-  List<Order> findByUserId(long id);
+  List<Order> findByUserId(Long id);
 }
