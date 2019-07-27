@@ -18,11 +18,17 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/users/3
+GET http://localhost:8080/users/
 Accept: application/json
 
 ###
 
-GET http://localhost:8080/users
+POST http://localhost:8080/users/1/orders
+Content-Type: application/json
+
+{
+  "description": "Pizza x2",
+  "amount": "28.8"
+}
 
 ###

@@ -7,6 +7,7 @@ import pl.dominisz.springintroduction.model.User;
 import pl.dominisz.springintroduction.repository.OrderRepository;
 import pl.dominisz.springintroduction.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,5 +34,13 @@ public class OrderServiceImpl implements OrderService {
   @Override
   public Order createOrderWithoutUser(Order order) {
     return null;
+  }
+
+  @Override
+  public List<Order> findOrdersForUser(long id) {
+    if (!userRepository.existsById(id)) {
+      throw new EntityNotFoundException("User with id " + id + " not found");
+    }
+    return orderRepository.findByUserId(id);
   }
 }

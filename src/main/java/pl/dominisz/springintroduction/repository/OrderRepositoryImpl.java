@@ -5,6 +5,7 @@ import pl.dominisz.springintroduction.model.Order;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class OrderRepositoryImpl implements OrderRepository {
@@ -17,5 +18,12 @@ public class OrderRepositoryImpl implements OrderRepository {
     order.setId(index);
     index++;
     return order;
+  }
+
+  @Override
+  public List<Order> findByUserId(long id) {
+    return orders.stream()
+        .filter(order -> order.getUser().getId() == id)
+        .collect(Collectors.toList());
   }
 }
