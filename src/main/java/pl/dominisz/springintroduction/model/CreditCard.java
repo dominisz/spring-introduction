@@ -1,8 +1,13 @@
 package pl.dominisz.springintroduction.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Getter
+@Setter
 public class CreditCard {
 
   private String number;
@@ -10,16 +15,4 @@ public class CreditCard {
   private String verificationCode;
   private int month;
   private int year;
-
-  public CreditCard(String number, String holder, String verificationCode, int month, int year) {
-    this.number = number;
-    this.holder = holder;
-    this.verificationCode = verificationCode;
-    this.month = month;
-    this.year = year;
-  }
-
-  public String getNumber() {
-      return number;
-  }
 }

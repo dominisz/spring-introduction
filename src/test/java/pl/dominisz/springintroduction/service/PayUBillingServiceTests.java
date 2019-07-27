@@ -16,7 +16,12 @@ public class PayUBillingServiceTests {
   public void shouldCreateSuccessfulReceipt() {
     Order order = new Order();
     order.setAmount(BigDecimal.TEN);
-    CreditCard creditCard = new CreditCard("123456", "owner", "123", 1, 2020);
+    CreditCard creditCard = new CreditCard();
+    creditCard.setNumber("123456");
+    creditCard.setHolder("owner");
+    creditCard.setVerificationCode("123");
+    creditCard.setMonth(1);
+    creditCard.setYear(2020);
 
     CreditCardProcessor creditCardProcessor = Mockito.mock(CreditCardProcessor.class);
     TransactionLog transactionLog = Mockito.mock(TransactionLog.class);
