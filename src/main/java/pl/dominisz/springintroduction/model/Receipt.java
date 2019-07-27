@@ -1,8 +1,18 @@
 package pl.dominisz.springintroduction.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "receipts")
 public class Receipt {
+
+  @Id
+  @GeneratedValue
+  private Long id;
   private BigDecimal amount;
   private boolean successful;
   private String message;
