@@ -1,16 +1,24 @@
 package pl.dominisz.springintroduction.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "users")
+@Getter
+@Setter
 public class User {
 
-    private long id;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String email;
-    private String password;
-    private CreditCard creditCard;
-
+  @Id @GeneratedValue private Long id;
+  private String firstName;
+  private String lastName;
+  private String address;
+  private String email;
+  private String password;
+  @Embedded private CreditCard creditCard;
+  @OneToMany(mappedBy = "user")
+  private List<Order> orders;
 }

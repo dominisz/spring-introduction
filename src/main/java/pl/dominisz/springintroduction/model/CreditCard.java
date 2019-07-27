@@ -1,5 +1,8 @@
 package pl.dominisz.springintroduction.model;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class CreditCard {
 
   private String number;
