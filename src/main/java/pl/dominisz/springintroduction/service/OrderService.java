@@ -1,13 +1,15 @@
 package pl.dominisz.springintroduction.service;
 
+import pl.dominisz.springintroduction.model.CreateOrderDto;
 import pl.dominisz.springintroduction.model.Order;
+import pl.dominisz.springintroduction.model.OrderDto;
 
 import java.util.List;
 
 public interface OrderService {
-  Order createOrderForUser(long id, Order order);
+  OrderDto createOrderForUser(long id, CreateOrderDto order);
 
-  Order createOrderWithoutUser(Order order);
+  OrderDto createOrderWithoutUser(CreateOrderDto order);
 
-  List<Order> findOrdersForUser(long id);
+  List<OrderDto> findOrdersForUser(long id);
 }

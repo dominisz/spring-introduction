@@ -2,7 +2,9 @@ package pl.dominisz.springintroduction.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.dominisz.springintroduction.model.CreateOrderDto;
 import pl.dominisz.springintroduction.model.Order;
+import pl.dominisz.springintroduction.model.OrderDto;
 import pl.dominisz.springintroduction.service.OrderService;
 
 import java.util.List;
@@ -17,17 +19,18 @@ public class OrderController {
   }
 
   @PostMapping("/users/{id}/orders")
-  public ResponseEntity<Order> createOrderForUser(@PathVariable long id, @RequestBody Order order) {
-    return ResponseEntity.ok(orderService.createOrderForUser(id, order));
+  public ResponseEntity<OrderDto> createOrderForUser(
+      @PathVariable long id, @RequestBody CreateOrderDto createOrderDto) {
+    return ResponseEntity.ok(orderService.createOrderForUser(id, createOrderDto));
   }
 
   @PostMapping("/orders")
-  public ResponseEntity<Order> createOrderWithoutUser(@RequestBody Order order) {
-    return ResponseEntity.ok(orderService.createOrderWithoutUser(order));
+  public ResponseEntity<OrderDto> createOrderWithoutUser(@RequestBody CreateOrderDto createOrderDto) {
+    return ResponseEntity.ok(orderService.createOrderWithoutUser(createOrderDto));
   }
 
   @GetMapping("/users/{id}/orders")
-  public ResponseEntity<List<Order>> findOrdersForUser(@PathVariable long id) {
+  public ResponseEntity<List<OrderDto>> findOrdersForUser(@PathVariable long id) {
     return ResponseEntity.ok(orderService.findOrdersForUser(id));
   }
 }
