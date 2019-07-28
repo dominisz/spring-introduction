@@ -2,8 +2,8 @@ package pl.dominisz.springintroduction.service;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pl.dominisz.springintroduction.model.ChargeRequest;
-import pl.dominisz.springintroduction.model.ChargeResult;
+import pl.dominisz.creditcardmodel.ChargeRequest;
+import pl.dominisz.creditcardmodel.ChargeResult;
 import pl.dominisz.springintroduction.model.CreditCard;
 
 import java.math.BigDecimal;

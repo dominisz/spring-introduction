@@ -1,8 +1,8 @@
 package pl.dominisz.springintroduction.service;
 
 import org.springframework.stereotype.Component;
+import pl.dominisz.creditcardmodel.ChargeResult;
 import pl.dominisz.springintroduction.exception.UnreachableException;
-import pl.dominisz.springintroduction.model.ChargeResult;
 import pl.dominisz.springintroduction.model.ChargeResultEntity;
 import pl.dominisz.springintroduction.repository.ChargeResultEntityRepository;
 
@@ -20,7 +20,7 @@ public class DatabaseTransactionLog implements TransactionLog {
     ChargeResultEntity entity = new ChargeResultEntity();
     entity.setException(false);
     entity.setSuccessful(result.isSuccessful());
-    entity.setMessage(result.getDeclineMessage());
+    entity.setMessage(result.getDeclinedMessage());
     chargeResultEntityRepository.save(entity);
   }
 

@@ -1,6 +1,6 @@
 package pl.dominisz.springintroduction.service;
 
-import pl.dominisz.springintroduction.model.ChargeResult;
+import pl.dominisz.creditcardmodel.ChargeResult;
 import pl.dominisz.springintroduction.model.CreditCard;
 
 import java.math.BigDecimal;
