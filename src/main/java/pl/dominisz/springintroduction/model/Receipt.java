@@ -1,5 +1,9 @@
 package pl.dominisz.springintroduction.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +12,9 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "receipts")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Receipt {
 
   @Id
@@ -50,11 +57,4 @@ public class Receipt {
       }
   }
 
-  public boolean isSuccessfull() {
-    return successful;
-  }
-
-  public BigDecimal getAmount() {
-    return amount;
-  }
 }

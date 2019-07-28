@@ -34,7 +34,7 @@ public class PayUBillingServiceTests {
 
     Receipt receipt = payUBillingService.chargeOrder(order, creditCard);
 
-    Assertions.assertTrue(receipt.isSuccessfull());
+    Assertions.assertTrue(receipt.isSuccessful());
     Assertions.assertEquals(receipt.getAmount(), BigDecimal.TEN);
   }
 }
