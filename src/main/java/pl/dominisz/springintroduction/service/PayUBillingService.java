@@ -1,5 +1,6 @@
 package pl.dominisz.springintroduction.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -7,17 +8,13 @@ import java.math.BigDecimal;
 @Component
 public class PayUBillingService implements BillingService {
 
-  private final CreditCardProcessor creditCardProcessor;
-  private final DiscountCalculator discountCalculator;
-  private final TransactionLog transactionLog;
+  @Autowired private CreditCardProcessor creditCardProcessor;
 
-  public PayUBillingService(
-      CreditCardProcessor creditCardProcessor,
-      DiscountCalculator discountCalculator,
-      TransactionLog transactionLog) {
-    this.creditCardProcessor = creditCardProcessor;
-    this.discountCalculator = discountCalculator;
-    this.transactionLog = transactionLog;
+  @Autowired private DiscountCalculator discountCalculator;
+
+  @Autowired private TransactionLog transactionLog;
+
+  public PayUBillingService() {
     System.out.println("PayUBillingService created");
   }
 
