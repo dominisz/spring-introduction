@@ -1,5 +1,8 @@
 package pl.dominisz.springintroduction.service;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class DatabaseTransactionLog implements TransactionLog {
   public DatabaseTransactionLog() {
     System.out.println("DatabaseTransactionLog created");

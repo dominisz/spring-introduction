@@ -1,7 +1,10 @@
 package pl.dominisz.springintroduction.service;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 
+@Component
 public class PayUBillingService implements BillingService {
 
   private final CreditCardProcessor creditCardProcessor;
