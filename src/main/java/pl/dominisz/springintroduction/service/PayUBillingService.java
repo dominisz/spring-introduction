@@ -8,14 +8,30 @@ import java.math.BigDecimal;
 @Component
 public class PayUBillingService implements BillingService {
 
-  @Autowired private CreditCardProcessor creditCardProcessor;
-
-  @Autowired private DiscountCalculator discountCalculator;
-
-  @Autowired private TransactionLog transactionLog;
+  private CreditCardProcessor creditCardProcessor;
+  private DiscountCalculator discountCalculator;
+  private TransactionLog transactionLog;
 
   public PayUBillingService() {
     System.out.println("PayUBillingService created");
+  }
+
+  @Autowired
+  public void setCreditCardProcessor(CreditCardProcessor creditCardProcessor) {
+    this.creditCardProcessor = creditCardProcessor;
+    System.out.println("CreditCardProcessor injected");
+  }
+
+  @Autowired
+  public void setDiscountCalculator(DiscountCalculator discountCalculator) {
+    this.discountCalculator = discountCalculator;
+    System.out.println("DiscountCalculator injected");
+  }
+
+  @Autowired
+  public void setTransactionLog(TransactionLog transactionLog) {
+    this.transactionLog = transactionLog;
+    System.out.println("TransactionLog injected");
   }
 
   @Override
