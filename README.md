@@ -23,22 +23,24 @@ public interface BillingService {
 Along with the implementation, we'll write unit tests for our code.
 
 ## Direct constructor calls
-Here's what the code looks like when we just `new` up the credit card processor and transaction logger:
+Here's what the code looks like when we just `new` up the credit card processor, discount calculator  and transaction logger:
 
 ```
 public class PayUBillingService implements BillingService {
 
   @Override
   public Receipt chargeOrder(Order order, CreditCard creditCard) {
-    CreditCardProcessor processor = new PayUCreditCardProcessor();
+    CreditCardProcessor creditCardProcessor = new PayUCreditCardProcessor();
+    DiscountCalculator discountCalculator = new WeekendDiscountCalculator();
     TransactionLog transactionLog = new DatabaseTransactionLog();
 
     try {
-      ChargeResult result = processor.charge(creditCard, order.getAmount());
+      BigDecimal discountedAmount = discountCalculator.getDiscount(order);
+      ChargeResult result = creditCardProcessor.charge(creditCard, discountedAmount);
       transactionLog.logChargeResult(result);
 
       return result.isSuccessful()
-          ? Receipt.forSuccessfulCharge(order.getAmount())
+          ? Receipt.forSuccessfulCharge(discountedAmount)
           : Receipt.forDeclinedCharge(result.getDeclineMessage());
     } catch (UnreachableException exception) {
       transactionLog.logConnectException(exception);
@@ -52,12 +54,6 @@ This code poses problems for modularity and testability. The direct, compile-tim
 To do:
 * add all required classes
 * use interfaces where possible
-* create unit tests
-
-## Factories
-
-To do:
-* implement factories for `CreditCardProcessor` and `TransactionLog`, factories should have `setInstance` and `getInstance` static methods
 * create unit tests
 
 ## Dependency Injection
@@ -74,42 +70,3 @@ To read:
 To do:
 * use Spring Core for dependency injection
 * create unit tests
-
-## Spring Boot & Spring Data
-
-To read:
-* [Building an application with Spring Boot](https://spring.io/guides/gs/spring-boot/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
-* [Building REST Services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-
-To do:
-* add required Spring Boot & Spring Data dependencies (starters)
-* create controllers, services and repositories for users, orders, receipts, transaction logs and other useful objects
-* add unit tests
-
-## Use other REST service
-
-To read:
-* [Consuming a RESTful Web Service](https://spring.io/guides/gs/consuming-rest/)
-
-To do:
-* use `RestTemplate` to implement `CreditCardProcessor`, which will use REST API of another service
-* create Spring Boot application (called Credit Card Application) with REST API for charging credit cards
-
-## Spring MVC
-
-To read:
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/consuming-rest/)
-* [Testing the Web Layer](https://spring.io/guides/gs/testing-web/)
-
-To do:
-* in Credit Card Application create some controllers and views for credit card operations
-
-## Spring Security
-
-To read:
-* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
-
-To do:
-* add security in Credit Card Application, only authorized users can use the application
