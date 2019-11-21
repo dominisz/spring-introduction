@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="billingService"
+          class="pl.dominisz.springintroduction.service.PayUBillingService">
+        <constructor-arg type="pl.dominisz.springintroduction.service.CreditCardProcessor" ref="creditCardProcessor"/>
+        <constructor-arg type="pl.dominisz.springintroduction.service.DiscountCalculator" ref="discountCalculator"/>
+        <constructor-arg type="pl.dominisz.springintroduction.service.TransactionLog" ref="transactionLog"/>
+    </bean>
+
+    <bean id="creditCardProcessor" class="pl.dominisz.springintroduction.service.PayUCreditCardProcessor">
+    </bean>
+
+    <bean id="transactionLog" class="pl.dominisz.springintroduction.service.DatabaseTransactionLog">
+    </bean>
+
+    <bean id="discountCalculator" class="pl.dominisz.springintroduction.service.WeekendDiscountCalculator">
+    </bean>
+
+</beans>
+
