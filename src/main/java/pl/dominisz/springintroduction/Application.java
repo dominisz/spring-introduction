@@ -1,7 +1,6 @@
 package pl.dominisz.springintroduction;
 
-import pl.dominisz.springintroduction.service.BillingService;
-import pl.dominisz.springintroduction.service.PayUBillingService;
+import pl.dominisz.springintroduction.service.*;
 
 public class Application {
 
