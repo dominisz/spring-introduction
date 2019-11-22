@@ -4,9 +4,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import pl.dominisz.springintroduction.service.BillingService;
-import pl.dominisz.springintroduction.service.CreditCard;
-import pl.dominisz.springintroduction.service.Order;
-import pl.dominisz.springintroduction.service.Receipt;
+import pl.dominisz.springintroduction.model.CreditCard;
+import pl.dominisz.springintroduction.model.Order;
+import pl.dominisz.springintroduction.model.Receipt;
 
 @ComponentScan
 public class Application {

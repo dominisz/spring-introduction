@@ -1,3 +1,3 @@
-package pl.dominisz.springintroduction.service;
+package pl.dominisz.springintroduction.exception;
 
 public class UnreachableException extends RuntimeException {}
